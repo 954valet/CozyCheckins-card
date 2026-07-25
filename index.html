@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#F6F0E4" />
+  <title>Mark Murphy | Cozy Check-ins</title>
+
+  <meta name="description" content="Mark Murphy, Founder of Cozy Check-ins — Daily peace of mind." />
+  <meta property="og:title" content="Mark Murphy | Cozy Check-ins" />
+  <meta property="og:description" content="Daily peace of mind. Simple • Caring • Reliable." />
+  <meta property="og:type" content="website" />
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <main class="page-shell">
+
+    <!--
+      One card, two sides.
+      IMPORTANT: Only ONE face is visible at a time.
+      The JS swaps faces at the 90-degree point so Firefox/Chrome/Safari
+      cannot show the "transparent overlapping" problem.
+    -->
+    <div class="flip-stage">
+      <button
+        class="business-card"
+        id="businessCard"
+        type="button"
+        aria-label="Flip Cozy Check-ins digital business card"
+        aria-pressed="false"
+      >
+        <div class="flip-animator" id="flipAnimator">
+
+          <!-- FRONT -->
+          <section class="card-face card-front" id="cardFront">
+            <div class="edge-band"></div>
+
+            <div class="front-copy">
+              <header class="brand">
+                <img class="brand-logo" src="assets/logo.svg" alt="" />
+                <div>
+                  <h1>Cozy Check-ins</h1>
+                  <p>DAILY PEACE OF MIND</p>
+                </div>
+              </header>
+
+              <section class="identity">
+                <h2>MARK MURPHY</h2>
+                <p>Founder</p>
+              </section>
+
+              <section class="contact-list" aria-label="Mark Murphy contact information">
+                <div><span class="round-icon">☎</span><span>(276) 250-5397</span></div>
+                <div><span class="round-icon">✉</span><span>mmurphy@cozycheckins.com</span></div>
+                <div><span class="round-icon">◎</span><span>www.cozycheckins.com</span></div>
+              </section>
+
+              <div class="heart-rule"><span></span><b>♥</b><span></span></div>
+              <p class="values">Simple <i>•</i> Caring <i>•</i> Reliable</p>
+            </div>
+
+            <!-- Exact original house / hills / tree artwork from the selected card -->
+            <img
+              class="original-landscape"
+              src="assets/original-house-landscape.webp"
+              alt=""
+              aria-hidden="true"
+            />
+          </section>
+
+          <!-- BACK -->
+          <section class="card-face card-back" id="cardBack" hidden>
+            <div class="edge-band"></div>
+
+            <div class="back-content">
+              <div class="qr-frame">
+                <canvas id="liveQr" width="720" height="720" aria-label="QR code for this digital card"></canvas>
+                <img id="fallbackQr" src="assets/qr-fallback.png" alt="QR code for Cozy Check-ins" />
+                <div class="qr-center-logo" id="qrCenterLogo">
+                  <img src="assets/logo.svg" alt="" />
+                </div>
+              </div>
+
+              <p class="back-url">WWW.COZYCHECKINS.COM</p>
+
+              <div class="heart-rule back-rule">
+                <span></span><b>♥</b><span></span>
+              </div>
+
+              <p class="scan">SCAN TO LEARN MORE</p>
+              <p class="peace">Daily check-ins for peace of mind</p>
+            </div>
+          </section>
+
+        </div>
+      </button>
+
+      <p class="flip-hint">
+        <span aria-hidden="true">↻</span> Tap the card to flip it
+      </p>
+    </div>
+
+    <!-- ACTIONS -->
+    <section class="actions" aria-label="Digital card actions">
+      <a class="action action-call" href="tel:+12762505397">
+        <span>☎</span><strong>Call</strong>
+      </a>
+
+      <a class="action action-email" href="mailto:mmurphy@cozycheckins.com">
+        <span>✉</span><strong>Email</strong>
+      </a>
+
+      <a
+        class="action action-web"
+        href="https://www.cozycheckins.com"
+        target="_blank"
+        rel="noopener"
+      >
+        <span>◎</span><strong>Website</strong>
+      </a>
+
+      <a
+        class="action action-linkedin"
+        href="https://www.linkedin.com/in/mark-murphy-cozy"
+        target="_blank"
+        rel="noopener"
+      >
+        <span class="linkedin-icon">in</span><strong>Linked-In</strong>
+      </a>
+
+      <a
+        class="action action-save"
+        href="mark-murphy.vcf"
+        download="Mark-Murphy-Cozy-Checkins.vcf"
+      >
+        <span>＋</span><strong>Save Contact</strong>
+      </a>
+
+      <button class="action action-share" id="shareButton" type="button">
+        <span>↗</span><strong>Share</strong>
+      </button>
+    </section>
+
+    <p class="contact-note">
+      Save Contact uses a standard vCard for iPhone and Android.
+    </p>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </main>
+
+  <!-- QR generator. A bundled fallback QR remains visible if this CDN cannot load. -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
